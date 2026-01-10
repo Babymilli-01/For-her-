@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #2b1055, #000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 45px;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 12px;
+    }
+
+    .highlight {
+      color: #ff8fab;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 22px;
+      opacity: 0.95;
+    }
+
+    /* Image section */
+    .photo-wrapper {
+      margin: 25px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255, 143, 171, 0.6);
+      box-shadow: 0 0 25px rgba(255, 143, 171, 0.4);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px rgba(255, 143, 171, 0.3); }
+      50% { box-shadow: 0 0 35px rgba(255, 143, 171, 0.6); }
+      100% { box-shadow: 0 0 20px rgba(255, 143, 171, 0.3); }
+    }
+
+    .question {
+      font-size: 1.45rem;
+      margin: 30px 0 20px;
+      font-weight: 500;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes {
+      background: linear-gradient(135deg, #ff8fab, #ffc2d1);
+      color: #000;
+      font-weight: 600;
+    }
+
+    .yes:hover {
+      transform: translateY(-2px);
+    }
+
+    .think {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+
+    .think:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .response {
+      margin-top: 25px;
+      font-size: 1.1rem;
+      display: none;
+      animation: fadeIn 1s ease;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Hi <span class="highlight">AYOKA MI </span> 💖</h1>
+
+    <p>
+      I made this because you matter to me,
+      and I wanted to do something thoughtful — just for you.
+    </p>
+
+    <div class="photo-wrapper">
+      <img src="her-photo.jpg" alt="Her picture" class="photo">
+    </div>
+
+    <p>
+      I admire your presence, your smile, and the way you make conversations feel easy.
+      Every little moment with you stays on my mind longer than it should.
+    </p>
+
+    <p>
+      I’m not here to rush you or make you uncomfortable.
+      I just want to be honest about how I feel.
+    </p>
+
+    <div class="question">
+      Would you like to be my girlfriend?
+    </div>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">Yes 💕</button>
+      <button class="think" onclick="thinkAboutIt()">I’d like to think about it</button>
+    </div>
+
+    <div class="response" id="response"></div>
+  </div>
+
+  <script>
+    const response = document.getElementById("response");
+
+    function sayYes() {
+      response.style.display = "block";
+      response.innerHTML =
+        "You just made me smile for real 💛<br/>I’m excited to see where this goes.";
+    }
+
+    function thinkAboutIt() {
+      response.style.display = "block";
+      response.innerHTML =
+        "That’s completely okay 🌷<br/>Take your time — I respect you.";
+    }
+
+    // floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }, 600);
+  </script>
+
+</body>
+</html>
